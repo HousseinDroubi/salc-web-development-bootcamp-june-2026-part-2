@@ -1,0 +1,15 @@
+1- What is NodeJS:
+NodeJS is a JS runtime environment. It's a software that let developers run JS files outside the browser.
+
+2- What can I use in NodeJS that I can't use in browser:
+    * fs: file system
+    * os controls: check CPU storage, total memory
+    * process management
+
+3- What can I use in browser that I can't use in NodeJS:
+    * DOM
+    * localStorage
+    * sessionStorage
+
+4- How to run a js file using NodeJS:
+    node file_name.js

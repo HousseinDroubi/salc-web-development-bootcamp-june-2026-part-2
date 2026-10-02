@@ -1,0 +1,74 @@
+1- npm: Node Package Manager, is like an app store for javascript developers.
+
+2- How to create a NodeJS project:
+    npm init -y
+The above command will producea file called pacakge.json.
+
+3- pacakge.json: is a file that lives in the root level on nodejs project,
+it's a blueprint of nodejs project. It typically includes:
+    * project info
+    * dependencies
+    * scripts
+
+Example:
+{
+  "name": "project_name_goes_here", // project name
+  "version": "1.0.0", // version name in the form of: MAJOR.MINOR.PTACH
+  "description": "", // description about the project
+  "main": "index.js", // entry point of nodejs project
+  "scripts": { // shortcuts for running some commands by using: npm run script_name
+    "start": "node index.js" // example here will run file called index.js. Note: for only start script, we can run: npm run start or npm start
+  },
+  "keywords": [], // list of tags or search words related to your project to help other developers find your project in npmjs.com 
+  "author": "", // author of the nodejs project
+  "license": "ISC", // the legal rules for how other developers can use or modify the code
+  "type": "commonjs" // commonjs tells NodeJS how to handle js modules
+  // "type": "module" // module another way to tell NodeJS how to handle js modules
+  dependencies:{ // here were your project's dependencies exist
+
+  },
+  devDependencies:{ // here were your project's dependencies that only needed while building project exist
+
+  }
+}
+
+4- How to install a pacakge:
+npm install dependency_name
+
+5- How to install a specific version of pacakge:
+npm install dependency_name@x.y.z 
+
+6- How to uninstall a pacakge:
+npm uninstall dependency_name 
+
+7- How to install a pacakge in devDependencies:
+npm i dependency_name --save-dev
+
+8- How to install a specific version of a pacakge in devDependencies:
+npm i dependency_name@x.y.z --save-dev
+
+9- What is node_modules:
+    A folder storage room where NodeJS keeps all external code, tools and libraries that your project depends on.
+  
+10- if node_modules isn't existed (like ignored in git which is recommended), how to install packages that my project relies on:
+  npm install
+
+11- How to update packages:
+  npm update
+
+12- When installing a package, you might see a symbol like ~ (tilde) or ^(Caret). What are these:
+  NodeJS use semantic versioning, which looks like: MAJOR.MINOR.PATCH (example 4.18.2)
+
+    -MAJOR: Big update that might break your old code (jump from 4 to 5)
+    -MAJOR: New features added, but safe and doesn't break your old code. (jump from 18 to 19)
+    -PATCH: Small fixes but safe and doesn't break your old code. (jump from 2 to 3)
+
+  So,how does  ~ and ^ handle number differently:
+    ^: default one -> allows MINOR and PATCH updates
+    ~: default one -> allows only PATCH updates
+
+13- What is package-lock.json:
+  A file detailed lock-and-key record of the exact version package installed inside node_modules.
+  Even though ~ and ^ existed, but package-lock.json will lock it. Unless you run:
+    * npm update
+    * or delete package-lock.json
