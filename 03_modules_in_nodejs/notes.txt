@@ -1,0 +1,6 @@
+A module in NodeJS is a reusable piece of code contained in its own file that 
+you can easily share and use across different parts of your application.
+
+We have two main tpyes of telling node, js how to hanlde files:
+    * commonjs
+    * esmodule
