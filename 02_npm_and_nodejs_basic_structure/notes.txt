@@ -56,7 +56,14 @@ npm i dependency_name@x.y.z --save-dev
 11- How to update packages:
   npm update
 
-12- When installing a package, you might see a symbol like ~ (tilde) or ^(Caret). What are these:
+
+12- How to install a package globally:
+  npm i -g nodemon
+
+13- How to uninstall a package globally:
+  npm uninstall -g nodemon
+
+14- When installing a package, you might see a symbol like ~ (tilde) or ^(Caret). What are these:
   NodeJS use semantic versioning, which looks like: MAJOR.MINOR.PATCH (example 4.18.2)
 
     -MAJOR: Big update that might break your old code (jump from 4 to 5)
@@ -67,7 +74,7 @@ npm i dependency_name@x.y.z --save-dev
     ^: default one -> allows MINOR and PATCH updates
     ~: default one -> allows only PATCH updates
 
-13- What is package-lock.json:
+15- What is package-lock.json:
   A file detailed lock-and-key record of the exact version package installed inside node_modules.
   Even though ~ and ^ existed, but package-lock.json will lock it. Unless you run:
     * npm update
