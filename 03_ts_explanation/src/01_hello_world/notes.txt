@@ -1,0 +1,2 @@
+1- rootDir: is the directory that contains the source code.
+2- outir: is the directory that contains the compiled code.

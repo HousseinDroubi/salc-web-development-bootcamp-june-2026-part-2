@@ -1,0 +1,8 @@
+1- Typescript is a programming language that is built on top of JavaScript, by adding static types. It
+helps you find errors in your code while you're building your project before the application runs.
+
+2- How to install Typescript in node project:
+    npm install typescript --save-dev
+
+3- When working with NodeJs, you should also install Node's official type definitions as a devDependencies for built-in modules like path, fs/promises...
+    npm install @types/node --save-dev

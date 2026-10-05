@@ -1,0 +1,2 @@
+1- npx tsc --init will create a tsconfig.json for us with default configurations.
+2- We can implement hot-reload in Typescript using tsx. (Find out scripts and devDependencies for more info)

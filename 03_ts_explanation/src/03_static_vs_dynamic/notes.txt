@@ -1,0 +1,9 @@
+Dynamically typed:
+    * Types are dynamic, we can always change the type
+    * Type checking at execution time (run-time)
+    * Error detected after execution
+
+Statically typed:
+    * Types are static, once we declare it, we cannot change it
+    * Type of variables know at compile time
+    * Error detected earlier
