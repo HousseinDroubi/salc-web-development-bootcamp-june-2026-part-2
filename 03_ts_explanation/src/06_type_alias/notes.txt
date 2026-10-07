@@ -1,0 +1,3 @@
+1- A type in TypeScript is a label or rule that defines what kind of value a variable, parameter,
+or function can hold (e.g., string, number, boolean, or custom structures like objects and arrays).
+TypeScript uses these types to check your code at compile time, catching bugs and typos before your code ever runs.

@@ -1,0 +1,2 @@
+- A tuple is a fixed-length array where the type and position of each element
+are strictly defined.

@@ -1,0 +1,7 @@
+1- JS doesn't support interface
+2- interface acts like type
+3- We can use readonly property and optional character (?) inside interface
+
+4- interface VS type
+    a) interface is the exact same as type
+    b) interface use extends while type use &

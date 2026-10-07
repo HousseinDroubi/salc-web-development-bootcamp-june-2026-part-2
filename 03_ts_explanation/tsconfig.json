@@ -1,7 +1,13 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    "removeComments": true,
+
+    // "noImplicitAny":false,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "allowUnreachableCode":false,
+    // "removeComments": true,
+
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",

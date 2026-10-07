@@ -1,0 +1,2 @@
+- An enum (short for enumeration) is a custom data type that lets you give friendly names
+to a set of values (like numbers or strings).

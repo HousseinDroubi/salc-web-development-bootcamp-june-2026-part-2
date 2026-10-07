@@ -1,0 +1,2 @@
+1- Never means it will never return a value
+2- allowUnreachableCode: false, will report us if a code is unreachable
