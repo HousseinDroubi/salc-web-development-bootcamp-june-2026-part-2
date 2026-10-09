@@ -1,0 +1,8 @@
+1- Inheritance: A mechanism allowing a child class to adopt the properties and methods of a parent class.
+
+2- Super Keyword: A reference used in a child class to call or access its parent class.
+
+3- override keyword: A modifier used in a child class to explicitly indicate that it is replacing a method from its parent class 
+which is type of polymorphism.
+
+4- "noImplicitOverride": true will report us if we override a method without the "override" keyword.

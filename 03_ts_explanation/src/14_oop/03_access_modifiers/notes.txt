@@ -1,0 +1,5 @@
+1- properties and methods of the TypeScript class are "public" by default, therefore you don't need to precede members with the public keyword. 
+2- Access modifiers are:
+    * default (or public): accessed everywhere
+    * protected: accessed only by children
+    * private: accessed only inside the same class

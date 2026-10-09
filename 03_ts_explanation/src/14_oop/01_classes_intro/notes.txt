@@ -1,0 +1,5 @@
+1- Class: A blueprint for creating objects that bundles data and behavior together.
+
+2- Constructor: A special method that runs automatically when a new class instance is created, used to initialize properties.
+
+3- "this" Keyword: A reference pointing to the current instance of a class.
