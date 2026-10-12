@@ -1,0 +1,9 @@
+MVC is an architectural design pattern that separates an application into three distinct layers:
+* Model: Handles data logic and database rules (e.g., fetching, saving, or updating data in MongoDB, PostgreSQL, etc.).
+
+* View: Handles the user interface and presentation layer (like returning JSON to a React/Vue frontend).
+
+* Controller: Handles the application logic and incoming requests (req). It talks to the Model to retrieve/manipulate data, then tells the View or Response (res) what to display.
+
+Router in ExpressJS:
+- In Express.js, a Router is an isolated, mini-application instance that groups related routes and middleware into a modular module. It allows developers to organize route definitions into separate files and mount them under a base URL path (e.g., /users).

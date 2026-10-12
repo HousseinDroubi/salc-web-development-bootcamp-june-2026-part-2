@@ -1,0 +1,19 @@
+{
+  "name": "03_routes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/app.js",
+  "scripts": {
+    "build":"tsc",
+    "start":"node ./dist/app.js",
+    "dev":"tsx watch ./src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "express": "^5.3.0"
+  }
+}

@@ -1,0 +1,3 @@
+1- Request Body: Data sent inside the payload of an HTTP request (typically in POST, PUT, or PATCH requests) used to submit complex data, like forms or JSON objects, without exposing it in the URL.
+
+2- Body-Parser: Middleware that reads incoming request body data (like JSON) and makes it usable in code as req.body.
