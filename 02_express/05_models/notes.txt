@@ -1,0 +1,16 @@
+1- In this directory. The jobs of main file app.ts is:
+    - initialize express object
+    - listen on a certain port
+    - pass routes start with "/todos" to routes/todo_routes.ts
+
+2- The job of routes/todo_routes.ts is to initialize apis using GET, POST, PUT and DELETE and
+call appropriate methods from controllers/todo_controller.ts
+
+3- The jobs of models/todo_model.ts are:
+    - initialize in-memory todos array
+    - implement the functionality for crud operations for todos array without logic
+
+4- The jobs of controllers/todo_controller.ts are:
+    - get params from request and body
+    - make the logic for todo crud operations with calling methods from models/todo_model.ts
+    - send response back
