@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CORS Test</title>
+  </head>
+  <body>
+    <button onclick="makeRequest()">Send API</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      function makeRequest() {
+        axios
+          .post("http://127.0.0.1:4000/")
+          .then((response) => console.log(response.data))
+          .catch((error) => console.error("CORS Error captured:", error));
+      }
+    </script>
+  </body>
+</html>

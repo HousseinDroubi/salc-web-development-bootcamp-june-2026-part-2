@@ -1,0 +1,2 @@
+Middleware is a function that sits in the middle of a request-response cycle in a web application.
+It intercepts incoming HTTP requests, lets you run code (like authentication, logging, or parsing data), and then either passes the request on to the next function or ends the request early.

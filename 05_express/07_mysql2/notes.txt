@@ -1,0 +1,3 @@
+MySQL2 is a connection pool (mysql2/promise pool) is a managed group of reusable database connections.
+    * Without pool: There must be opening and closing a brand new connection for every single query—which is slow and resource-heavy.
+    * With pool: It keeps several connections open, hands them out when your app needs to talk to the database, and takes them back when finished to reuse for the next request.

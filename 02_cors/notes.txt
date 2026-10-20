@@ -1,0 +1,31 @@
+1- What is a Domain?
+    * In web security and networking, a domain acts as the unique address of a website or server.
+    * Different Names: Two websites with entirely different names (e.g.,https://example.com and https://my-example.com) are considered completely different domains.
+    * Different Ports: Even if two servers are on the exact same computer (localhost or 127.0.0.1), changing the port makes them different domains in the eyes of the browser. For example, http://127.0.0.1:3000 and http://127.0.0.1:4000 are treated as separate domains.
+
+2- What is CORS?
+CORS (Cross-Origin Resource Sharing) is a browser security feature. It prevents a malicious website running on one domain from secretly stealing data or making unauthorized requests to a server on another domain, unless that server explicitly gives permission.
+
+3- What does preflight mean?
+    A preflight request is a secret trial check (OPTIONS method) the browser sends before your actual request.
+    It asks the server: "Is this domain allowed to send this request(like with some headers)?" If the server says yes, the real request goes through; if no, the browser blocks it.
+
+4- Definitions of CORS Options:
+    When configuring the Express cors middleware, here is what each option means:
+        * origin: Specifies who is allowed to access your server (e.g., "http://127.0.0.1:3000"). Any other website will be blocked, you can also provide list of allowed domains (e.g. ["http://127.0.0.1:3000","http://127.0.0.1:4000"])
+        * methods: A whitelist of allowed HTTP request methods (e.g., ["GET","POST", "PUT"]). Blocks any HTTP verb not listed here during preflight checks.
+        * allowedHeaders: Specifies which custom headers clients are allowed to send along with their requests (e.g., ["Content-Type", "Authorization"]).
+        * optionsSuccessStatus: Specifies the HTTP status code (usually 200 or 204) to return for successful OPTIONS preflight requests, ensuring compatibility with older browsers/smartphones.
+        * exposedHeaders: example: ["X-Total-Count"], // Custom list of headers the frontend is allowed to read (since browsers hide most headers by default).
+        * credentials: true, // Allow cookies / authorization tokens to be sent
+        * maxAge: 600, // Cache the preflight check for 10 minutes (performance booster)
+
+What does maxAge in deep?
+Here what happens between the browser and the server:
+
+    * First Request: The browser asks the server for permission via a preflight (OPTIONS) check. The server says "Yes." The browser stores (caches) this approval pass for 600 seconds (10 minutes).
+    * Next Requests (within 10 mins): The browser skips asking the server entirely. It uses the saved pass and sends requests straight away, saving network trips and making your app faster!
+
+5- Notes:
+    * Even if your CORS config sets methods: ["POST"] (leaving out GET), a cross-origin GET request will still go through (will pass) if it has no custom headers.
+    This happens because the browser treats standard GET requests as "Simple Requests", skipping the preflight (OPTIONS) check where servers usually enforce method rules.
