@@ -1,0 +1,10 @@
+1- In this directory, we are doing "Set-Cookie" from backend with HttpOnly flag,
+this will make sure that browser can't send or control the cookies sent from backend,.
+On the other hand, the frontend should only attach the cookies sent from backend with every
+request.
+
+2- XSS attack:
+XSS (Cross-Site Scripting): Injecting malicious code into a trusted website so it runs inside a user's browser and steals their data or session.
+
+3- CSRF attack:
+CSRF (Cross-Site Request Forgery): Tricking a user's browser into sending unauthorized, unwanted requests to a website where they are already logged in.

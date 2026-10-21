@@ -1,0 +1,3 @@
+A JSON Web Token (JWT) is a compact format for securely passing information between parties as a JSON object.
+Because it is encoded rather than encrypted, anyone can read its contents, that means that sensitive details
+like passwords should never be included. While only the server possesses the secret key needed to verify the signature and prevent any tampering or forgery.

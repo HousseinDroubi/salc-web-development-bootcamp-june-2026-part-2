@@ -1,0 +1,2 @@
+1- To server login.html in this folder, run the following:
+npx live-server --port=3000
