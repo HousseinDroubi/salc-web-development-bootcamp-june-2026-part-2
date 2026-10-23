@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="./styles/shared.css" />
+    <link rel="stylesheet" href="./styles/sign_up.css" />
+    <link rel="icon" href="./assets/icons/logo.png" type="image/x-icon" />
+  </head>
+  <body class="flex j-c-c a-i-c m-h-100vh">
+    <main class="flex f-d-c j-c-c a-i-c">
+      <h1 class="title">Sign up</h1>
+      <section class="flex f-d-c a-i-c j-c-s-e box mt-20">
+        <input
+          id="input_username"
+          type="text"
+          class="input"
+          placeholder="Enter your username"
+        />
+        <input
+          id="input_password"
+          type="password"
+          class="input"
+          placeholder="Enter your password"
+        />
+        <input
+          id="input_repassword"
+          type="password"
+          class="input"
+          placeholder="Re-Enter your password"
+        />
+        <button id="button_login" class="button">Sign Up</button>
+        <a href="./index.html" class="a-s-e"
+          >Already have an account? Login now</a
+        >
+        <h4 class="mt-5" id="result"></h4>
+      </section>
+    </main>
+    <script src="./scripts/validations/sign_up_validation.js"></script>
+    <script src="./scripts/sign_up.js"></script>
+  </body>
+</html>

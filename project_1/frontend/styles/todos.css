@@ -1,0 +1,67 @@
+ol > li:first-child {
+  border-bottom: 2px solid var(--color-white);
+}
+
+main {
+  padding: 20px;
+}
+
+main > article {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+main > section,
+main > article {
+  margin-top: calc(30px + var(--header-height));
+}
+
+.todo-container {
+  width: 400px;
+  height: 200px;
+  border-radius: var(--border-radius-5);
+  border: 2px solid var(--color-blue);
+  padding: 20px;
+}
+
+.todo-container > h3 {
+  font-size: var(--font-size-1-5);
+}
+
+.todo-container > p {
+  color: rgba(128, 128, 128, 0.8);
+  font-weight: bold;
+}
+
+.todo-container > section {
+  width: 100%;
+}
+
+.todo-container section > button:first-child {
+  background-color: var(--color-blue);
+}
+
+.todo-container section > button:last-child {
+  background-color: var(--color-red);
+}
+
+.todo-container button {
+  width: 80px;
+  height: 32px;
+  border-radius: var(--border-radius-5);
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: transform 50ms 0s linear;
+}
+
+.todo-container button:hover {
+  transform: scale(105%);
+}
+
+@media screen and (max-width: 465px) {
+  main > section,
+  main > article {
+    margin-top: calc(5px + var(--header-height));
+  }
+}

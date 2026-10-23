@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="./styles/shared.css" />
+    <link rel="stylesheet" href="./styles/update_profile.css" />
+    <link rel="icon" href="./assets/icons/logo.png" type="image/x-icon" />
+  </head>
+  <body class="flex f-d-c j-c-c a-i-c m-h-100vh">
+    <header class="flex a-i-c j-c-s-b">
+      <section>
+        <h2>Todo</h2>
+      </section>
+      <section>
+        <nav>
+          <ol class="flex">
+            <li>
+              <a href="./todos.html">
+                <img
+                  src="./assets/icons/all-todos.svg"
+                  alt="all todos"
+                  width="40"
+                  height="40"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="./add_todo.html">
+                <img
+                  src="./assets/icons/add-todo.svg"
+                  alt="add todos"
+                  width="40"
+                  height="40"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="./update_password.html">
+                <img
+                  src="./assets/icons/password.svg"
+                  alt="update password"
+                  width="40"
+                  height="40"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="./update_profile.html">
+                <img
+                  src="./assets/icons/profile.svg"
+                  alt="update profile"
+                  width="40"
+                  height="40"
+                />
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </section>
+    </header>
+
+    <main class="flex f-d-c j-c-c a-i-c">
+      <h1 class="title">Update Profile</h1>
+      <section class="flex f-d-c a-i-c j-c-s-e box mt-20">
+        <!-- TODO: remove default value -->
+        <input
+          type="text"
+          class="input"
+          placeholder="Enter your username"
+          value="Houssein"
+        />
+        <button class="button">Update Profile</button>
+        <h4 class="mt-5"></h4>
+      </section>
+    </main>
+    <script src="./scripts/update_profile.js"></script>
+  </body>
+</html>
