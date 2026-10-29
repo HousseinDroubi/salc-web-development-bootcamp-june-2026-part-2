@@ -64,17 +64,23 @@
     <main class="flex f-d-c j-c-c a-i-c">
       <h1 class="title">Update Profile</h1>
       <section class="flex f-d-c a-i-c j-c-s-e box mt-20">
-        <!-- TODO: remove default value -->
         <input
+          id="input_username"
           type="text"
           class="input"
           placeholder="Enter your username"
-          value="Houssein"
         />
-        <button class="button">Update Profile</button>
-        <h4 class="mt-5"></h4>
+        <button class="button" id="button_update_profile">
+          Update Profile
+        </button>
+        <h4 class="mt-5" id="result"></h4>
       </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/utils/constants.js"></script>
+    <script src="./scripts/utils/cookies.js"></script>
+    <script src="./scripts/validations/utils_validations.js"></script>
+    <script src="./scripts/validations/update_profile.js"></script>
     <script src="./scripts/update_profile.js"></script>
   </body>
 </html>

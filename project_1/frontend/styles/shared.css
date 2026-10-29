@@ -126,6 +126,11 @@ textarea {
   transform: scale(108%);
 }
 
+/* Reusable */
+
+.d-none {
+  display: none;
+}
 /* Typography */
 
 a {

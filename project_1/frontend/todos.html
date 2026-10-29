@@ -61,47 +61,15 @@
       </section>
     </header>
     <main>
-      <!-- <section class="color-blue flex j-c-c">
-        <h1>No Todos Yet</h1>
-      </section> -->
-      <article class="flex j-c-s-b">
-        <section class="todo-container flex f-d-c j-c-s-e a-i-c">
-          <h3 class="color-blue">This is todo1</h3>
-          <p class="a-s-e">10/23/2026, 5:30:49 PM</p>
-          <section class="flex j-c-s-e">
-            <button>View</button>
-            <button>Delete</button>
-          </section>
-        </section>
-
-        <section class="todo-container flex f-d-c j-c-s-e a-i-c">
-          <h3 class="color-blue">This is todo1</h3>
-          <p class="a-s-e">10/23/2026, 5:30:49 PM</p>
-          <section class="flex j-c-s-e">
-            <button>View</button>
-            <button>Delete</button>
-          </section>
-        </section>
-
-        <section class="todo-container flex f-d-c j-c-s-e a-i-c">
-          <h3 class="color-blue">This is todo1</h3>
-          <p class="a-s-e">10/23/2026, 5:30:49 PM</p>
-          <section class="flex j-c-s-e">
-            <button>View</button>
-            <button>Delete</button>
-          </section>
-        </section>
-
-        <section class="todo-container flex f-d-c j-c-s-e a-i-c">
-          <h3 class="color-blue">This is todo1</h3>
-          <p class="a-s-e">10/23/2026, 5:30:49 PM</p>
-          <section class="flex j-c-s-e">
-            <button>View</button>
-            <button>Delete</button>
-          </section>
-        </section>
-      </article>
+      <section id="empty_todos_container" class="color-blue flex j-c-c">
+        <h1 id="todos_result">No Todos Yet</h1>
+      </section>
+      <article id="todos_container" class="flex w-100"></article>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/utils/constants.js"></script>
+    <script src="./scripts/utils/date.js"></script>
+    <script src="./scripts/utils/add_to_dom.js"></script>
     <script src="./scripts/todos.js"></script>
   </body>
 </html>
