@@ -48,7 +48,8 @@ class UserController {
     res
       .cookie("token", result.token, {
         httpOnly: true,
-        sameSite: "strict",
+        // sameSite: "strict", strict when both frontend and backend are hosted on the same domain
+        sameSite: "none", // none when both frontend and backend are hosted on completely different domains
         secure: process.env.NODE_ENV === "production",
         maxAge: 24 * 60 * 60 * 1000,
       })
