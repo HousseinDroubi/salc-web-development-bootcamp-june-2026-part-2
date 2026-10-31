@@ -86,8 +86,8 @@ class UserService {
     if (!result) {
       return 401;
     }
-
-    const is_user_added = await UserModel.updatePassword(new_password, id);
+    const hashed_password = await BcryptUtils.hashPassword(new_password);
+    const is_user_added = await UserModel.updatePassword(hashed_password, id);
     return is_user_added ? 200 : 500;
   }
 }

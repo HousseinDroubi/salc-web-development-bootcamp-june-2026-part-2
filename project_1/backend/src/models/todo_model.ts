@@ -24,6 +24,18 @@ class TodoModel {
     return rows as TodoType[];
   }
 
+  public static async updateTodo(
+    todo_id: number,
+    todo_title: string,
+  ): Promise<boolean> {
+    const [result] = await pool.query<ResultSetHeader>(
+      "UPDATE todos SET title = ? WHERE id = ?",
+      [todo_title, todo_id],
+    );
+
+    return result.affectedRows > 0;
+  }
+
   public static async deleteTodoById(todo_id: number): Promise<boolean> {
     const [result] = await pool.query<ResultSetHeader>(
       "DELETE FROM todos WHERE id = ?",

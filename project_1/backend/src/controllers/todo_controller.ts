@@ -39,14 +39,62 @@ class TodoController {
     req: Request,
     res: Response,
   ): Promise<void> => {
-    // Todo
+    const { id }: UserJwtPayloadType = req.body;
+    const todo_id = Number.parseInt(req.params.todo_id as string);
+    const result: 403 | 404 | TodoType = await TodoService.getTodoById(
+      id,
+      todo_id,
+    );
+
+    if (result == 403) {
+      res.status(result).json({
+        message: "Action not allowed",
+      });
+      return;
+    }
+
+    if (result == 404) {
+      res.status(result).json({
+        message: "Todo is not found",
+      });
+      return;
+    }
+
+    res.status(200).json({
+      todo: result,
+    });
   };
 
   public static updateTodo = async (
     req: Request,
     res: Response,
   ): Promise<void> => {
-    // Todo
+    const { id, title }: todoBodyDto = req.body;
+    const todo_id = Number.parseInt(req.params.todo_id as string);
+    const result = await TodoService.updateTodo(title, todo_id, id);
+
+    if (result == 500) {
+      res.status(result).json({
+        message: "Internal Server Error",
+      });
+      return;
+    }
+
+    if (result == 403) {
+      res.status(result).json({
+        message: "Action not allowed",
+      });
+      return;
+    }
+
+    if (result == 404) {
+      res.status(result).json({
+        message: "Todo not found",
+      });
+      return;
+    }
+
+    res.status(result).send();
   };
 
   public static deleteTodoById = async (

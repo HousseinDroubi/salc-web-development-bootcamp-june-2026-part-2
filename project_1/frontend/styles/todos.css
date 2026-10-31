@@ -16,6 +16,13 @@ main > article {
   margin-top: calc(30px + var(--header-height));
 }
 
+#todos_container {
+  display: grid;
+  justify-content: space-between;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
 .todo-container {
   width: 400px;
   height: 200px;
@@ -57,6 +64,14 @@ main > article {
 
 .todo-container button:hover {
   transform: scale(105%);
+}
+@media screen and (max-width: 860px) {
+  #todos_container {
+    grid-template-columns: repeat(auto-fit, minmax(90%, 1fr));
+  }
+  .todo-container {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 465px) {

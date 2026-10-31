@@ -6,24 +6,27 @@ const todo_id = Number(sessionStorage.getItem("last_todo_id"));
 
 if (!todo_id) {
   location.href = "./todos.html";
-  return;
 }
 
 const url = `${TODO_URL}/${todo_id}`;
+
 axios
   .get(url, {
     withCredentials: true,
   })
   .then((response) => {
-    console.log(response.data);
+    if (response.status == 200) {
+      input_todo_title.value = response.data.todo.title;
+    }
   })
   .catch((error) => {
     result.classList.remove("color-green");
     result.classList.add("color-red");
     result.innerText = error.response?.data?.message;
+    console.log(error);
   });
 
-button_update_todo.addEventListener("click", () => {
+button_update_todo.addEventListener("click", async () => {
   const todo_title = input_todo_title.value;
   const validation_result = validateTodo(todo_title);
 
@@ -34,32 +37,26 @@ button_update_todo.addEventListener("click", () => {
     return;
   }
   try {
-    // const url = `${TODO_URL}/${todo_id}`;
-    // const body = {
-    //   title: todo_title,
-    // };
-    // console.log(url);
-    // console.log(body);
-    // const response = await axios.put(url, body, {
-    //   withCredentials: true,
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // result.classList.remove("color-red");
-    // result.classList.add("color-green");
-    // result.innerText = response.data.message;
-    // if (response.status == 200) {
-    //   input_old_password.value = "";
-    //   input_new_password.value = "";
-    //   input_confirmation_password.value = "";
-    // }
+    const url = `${TODO_URL}/${todo_id}`;
+    const body = {
+      title: todo_title,
+    };
+    const response = await axios.put(url, body, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result.classList.remove("color-red");
+    result.classList.add("color-green");
+    result.innerText = "Todo Updated";
   } catch (error) {
     result.classList.remove("color-green");
     result.classList.add("color-red");
     const error_status_response = error.response?.status;
     if (
       error_status_response == 401 ||
+      error_status_response == 403 ||
       error_status_response == 404 ||
       error_status_response == 500
     ) {

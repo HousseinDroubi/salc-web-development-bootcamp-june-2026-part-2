@@ -18,6 +18,41 @@ class TodoService {
     return await TodoModel.getAllTodos(user_id);
   }
 
+  public static async getTodoById(
+    user_id: number,
+    todo_id: number,
+  ): Promise<TodoType | 403 | 404> {
+    const todo: TodoType | undefined = await TodoModel.getTodoById(todo_id);
+
+    if (!todo) {
+      return 404;
+    }
+
+    if (todo.user_id != user_id) {
+      return 403;
+    }
+
+    return todo;
+  }
+
+  public static async updateTodo(
+    todo_title: string,
+    todo_id: number,
+    user_id: number,
+  ): Promise<204 | 403 | 404 | 500> {
+    const todo = await TodoModel.getTodoById(todo_id);
+    if (!todo) {
+      return 404;
+    }
+
+    if (todo.user_id != user_id) {
+      return 403;
+    }
+
+    const result = await TodoModel.updateTodo(todo_id, todo_title);
+    return result ? 204 : 500;
+  }
+
   public static async deleteTodoById(
     todo_id: number,
     user_id: number,
@@ -34,47 +69,6 @@ class TodoService {
     const result = await TodoModel.deleteTodoById(todo_id);
     return result ? 204 : 500;
   }
-
-  // public static async updateProfile(
-  //   id: number,
-  //   username: string,
-  // ): Promise<403 | 500 | string> {
-  //   const user = await UserModel.getUser(undefined, username);
-
-  //   if (user) {
-  //     return 403;
-  //   }
-
-  //   const result = await UserModel.updateProfile(username, id);
-  //   if (!result) {
-  //     return 500;
-  //   }
-
-  //   return username;
-  // }
-
-  // public static async updatePassword(
-  //   id: number,
-  //   old_password: string,
-  //   new_password: string,
-  // ): Promise<200 | 401 | 404 | 500> {
-  //   const user = await UserModel.getUser(id);
-
-  //   if (!user) {
-  //     return 404;
-  //   }
-
-  //   const result = await BcryptUtils.comparePasswords(
-  //     old_password,
-  //     user.password,
-  //   );
-  //   if (!result) {
-  //     return 401;
-  //   }
-
-  //   const is_user_added = await UserModel.updatePassword(new_password, id);
-  //   return is_user_added ? 200 : 500;
-  // }
 }
 
 export default TodoService;
