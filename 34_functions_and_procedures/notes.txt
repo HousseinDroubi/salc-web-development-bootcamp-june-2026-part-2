@@ -1,0 +1,27 @@
+Quick Comparison Table
+
+Feature            |     Function(CREATE FUNCTION)                             |         Procedure (CREATE PROCEDURE)
+-------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------
+Main Job           |     To compute or fetch data and return results.          |         To perform actions (Insert, Update, Delete) and run business logic.
+-------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------
+How you run it     |     Using SELECT (e.g., SELECT my_function();             |         Using CALL (e.g., CALL my_procedure();)
+                   |          or SELECT * from my_function();)                 |
+-------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------
+Returning Data     |     Easily returns tables, lists, or single values.       |         Cannot return result sets directly (uses OUT parameters if needed).
+-------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------
+Transactions       |     Cannot use COMMIT or ROLLBACK.                        |         Can use COMMIT and ROLLBACK mid-execution.
+
+
+
+What does CREATE OR REPLACE mean?
+- The OR REPLACE part is a huge convenience feature in PostgreSQL.
+- If you use just CREATE PROCEDURE or CREATE FUNCTION and the routine already exists in your database, PostgreSQL will throw an error saying: "Hey, this already exists!"
+- By adding OR REPLACE, you tell PostgreSQL:
+    * If this function/procedure doesn't exist yet, create it.
+    * If it already exists, just update it with this new code over the old one.
+
+
+plpgsql: Procedural Language / PostgreSQL — PostgreSQL's own built-in procedural extension. It allows you to use programming constructs that standard SQL doesn't have, such as:
+    * Variables (DECLARE, :=)
+    * Control flow (IF / THEN / ELSE, loops like FOR and WHILE)
+    * Exception handling (EXCEPTION WHEN OTHERS THEN)

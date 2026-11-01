@@ -1,0 +1,29 @@
+1- SQL stands for Structured Query Language, it's used to manage data inside databases like PostgreSQL, MySQL...
+2- With SQL, we can do the CRUD operations (Create, Read, Update, and Delete) in PostgreSQL.
+3- Data are stored inside PostgreSQL using tables inside databases. One database can hold multiple schemas and tables.
+4- Schemas are like folders inside a database used to organize tables. The default schema created automatically in every new PostgreSQL database is named public, and it is the one accessible by default when you connect to a database without specifying a schema.
+5- MySQL vs. PostgreSQL are two big open-source database rivals.
+
+6- MySQL and PostgreSQL Comparison tables:
+
+        Feature:          |           MySQL                               |             PostgreSQL
+--------------------------|-----------------------------------------------|------------------------------------------------------------------------------  
+The "Vibe" for Beginners  |  Friendly & Forgiving: It tries to guess      |    Strict & Academic: It strictly follows SQL rules
+                          |  what you mean and often lets small mistakes  |    and will throw an error if your data types or syntax
+                          |                                               |   don't match.
+--------------------------|-----------------------------------------------|------------------------------------------------------------------------------  
+Best Used For             |  Quick web apps, content sites                |  Complex school projects, heavy data logic,
+                          | (like WordPress), and simple school projects. |  and learning strict database standards.    
+--------------------------|-----------------------------------------------|------------------------------------------------------------------------------  
+How it Handles Mistakes   | If you insert text that is too long or        |   If you make a type mistake, it stops you immediately
+                          | the wrong type, it might quietly cut it off   |    and forces you to fix your code.
+                          | or convert it for you.                        |  
+
+
+When to choose which?
+    - Choose MySQL if:
+        * You are building a standard web app, content management system (like WordPress), or e-commerce site.
+        * You want something quick to set up, easy to find shared hosting for, and optimized for fast, straightforward CRUD operations.
+    - Choose PostgreSQL if:
+        * You are building an application with complex business logic, financial transactions, or heavy data integrity requirements.
+        * You need advanced features like spatial/geographic data (PostGIS), custom array types, heavy JSON storage, or complex analytical queries.

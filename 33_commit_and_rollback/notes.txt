@@ -1,0 +1,9 @@
+- COMMIT and ROLLBACK are safety controls for your database changes.
+They let you group multiple actions (like updates or inserts) together
+into a single "package" called a transaction.
+
+COMMIT Scenario:
+I do want these changes, save them permanently to the database - Once you commit, there's no going back.
+
+ROLLBACK Scenario:
+An error happened in my transaction, I want to undo my changes

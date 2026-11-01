@@ -1,0 +1,6 @@
+1- Join in general combines frows from two tables or more based on a related column.
+2- We have multiple types of joins:
+    1) inner join: returns Only rows that match in both tables
+    2) right join: returns all rows from right table, and matching rows from the left table (or NULL if no match)
+    3) left join: returns all rows from left table, and matching rows from the right table (or NULL if no match)
+    4) self join: is the process of "JOIN" for a table with istelf

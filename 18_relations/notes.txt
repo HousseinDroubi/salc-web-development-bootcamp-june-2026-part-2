@@ -1,0 +1,10 @@
+1- We can implement relations in databases, where tables can have many type of relations with other tables.
+Relations can be done using something called foreign key. Which is a primary key of table 1 inside table 2.
+foreign key should has the exact same data type of primary key.
+
+    a) 1st type of relation: one-to-one relation. Where each row in table 1, has maximum one row in table 2
+    b) 2nd type of relation: one-to-many relation. Where each row in table 1, can have multiple rows in table 2. The point here, that all the rows of table 2 return directly to the row in table 1 only.
+    c) 3rd type of relation:
+        *) many-to-many relation. Here, we must have table 3 (for relations between table 1 and table 2) that holds at least the foreign keys of rows from table 1 and table 2.
+        *) One row in table 1 can have many rows in table 3 (relation table)
+        *) One row in table 2 can have many rows in table 3 (relation table)
