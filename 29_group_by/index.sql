@@ -85,3 +85,10 @@ FROM transactions GROUP BY customer_id;
 SELECT COUNT(amount) AS "number_of_transactions_per_customer", customer_id
 FROM transactions WHERE customer_id IS NOT NULL
 GROUP BY customer_id;
+
+
+-- The count of amount regarding customer id with a condition and a condition on count(amount)
+SELECT COUNT(amount) AS "number_of_transactions_per_customer", customer_id
+FROM transactions WHERE customer_id IS NOT NULL
+GROUP BY customer_id
+HAVING COUNT(amount) > 1;
