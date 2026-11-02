@@ -11,6 +11,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
     optionsSuccessStatus: 200,
     credentials: true, // We need this in order to send token as cookies
+    maxAge: 600, // 10 mins
   }),
 );
 const port = process.env.PORT || 4000;
