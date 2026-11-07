@@ -1,0 +1,66 @@
+1- Short Definition of NoSQL
+NoSQL stands for "Not Only SQL." It is a type of database designed to store and manage data in flexible,
+non-tabular formats (like JSON documents) rather than rigid rows and columns.
+
+2- Difference Between SQL and NoSQL & When to Use Each:
+
+  Feature     |                  SQL                                                  |                     NoSQL
+--------------|-----------------------------------------------------------------------|--------------------------------------------------------------------
+  Structure   |   Rigid tables, rows, and columns (pre-defined schema).               |   Flexible documents or key-value pairs (dynamic schema).
+--------------|-----------------------------------------------------------------------|--------------------------------------------------------------------
+  Relations   |   Native, strict foreign keys and joins.                              |   Manual referencing or embedding.
+--------------|-----------------------------------------------------------------------|--------------------------------------------------------------------
+  When to use |   Your data is structured like a spreadsheet: Think of                |   Your data changes constantly: If you are storing items    
+              |   rows and columns. Everything fits neatly into a predefined schema.  |   that don't all look the same
+--------------|-----------------------------------------------------------------------|--------------------------------------------------------------------
+
+* When to use SQL: For applications requiring complex transactions and strict data integrity (e.g., banking systems, heavily interconnected data).
+* When to use NoSQL: For applications with rapidly changing data structures, high scalability needs, or hierarchical/document-heavy data (e.g., content management, real-time analytics, catalogs).
+
+3- MongoDB, Collections, and Documents
+    * MongoDB: A popular open-source NoSQL document database.
+
+    * Collection: Equivalent to a SQL "table." It is a container that holds a group of MongoDB documents.
+
+    * Document: Equivalent to a SQL "row." It is a single record stored as a JSON-like structure (BSON) consisting of key-value pairs.
+
+4- How Data is Stored in Collections?
+Data is stored inside Collections as individual Documents. Unlike SQL where rows must follow an identical table structure,
+documents in the same MongoDB collection can have completely different fields.
+
+5- When to Implement Relations (Using the E-Commerce Example):
+    * Where NOT to implement relations (Embedded)
+        - Example: A Product and its static attributes (specifications) or a list of order item snapshots.
+        - Why: The specifications are small, bound to that specific product, and always read together with the product page.
+Example:
+{
+  "_id": "prod_123",
+  "name": "Wireless Keyboard",
+  "price": 89.99,
+  "specifications": {
+    "switchType": "Blue",
+    "connectivity": "Bluetooth"
+  }
+}
+    * Where you HAVE to implement relations (Reference):
+        - Example: A Product and its customer Reviews (when a product accumulates thousands of reviews).
+        - Why: To avoid hitting MongoDB's 16MB document size limit, to allow pagination (fetching only 10 reviews at a time), and to prevent rewriting the entire product document every time a new review is added.
+
+// Product Collection Document (No reviews stored here)
+{
+  "_id": "prod_123",
+  "name": "Wireless Keyboard",
+  "price": 89.99
+}
+
+// Separate Reviews Collection Document (Referenced via productId)
+{
+  "_id": "rev_999",
+  "productId": "prod_123",
+  "rating": 5,
+  "comment": "Amazing keyboard!"
+}
+
+6- Mongoose is an Object Data Modeling (ODM) library for Node.js and MongoDB.
+
+In an Node.js app, it acts as a translator between your code and the database, allowing you to define strict schemas (data structure and validation), create models, and perform type-safe CRUD operations with MongoDB using straightforward JavaScript methods.
