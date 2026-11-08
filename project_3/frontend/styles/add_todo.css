@@ -1,0 +1,7 @@
+ol > li:nth-child(2) {
+  border-bottom: 2px solid var(--color-white);
+}
+
+.box {
+  height: 350px;
+}
