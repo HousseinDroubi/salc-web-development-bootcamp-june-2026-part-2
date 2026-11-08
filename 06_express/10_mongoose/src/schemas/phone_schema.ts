@@ -1,6 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
-const phone_schema = new Schema({
+export interface IPhone {
+  name: string;
+  price: number;
+  user_id: mongoose.Types.ObjectId;
+}
+
+const phone_schema = new Schema<IPhone>({
   name: {
     type: String,
     required: [true, "Phone name/model is required"],
@@ -17,9 +23,10 @@ const phone_schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users", // Matches the User model collection name
     required: [true, "Each phone must belong to a user"],
+    index: true,
   },
 });
 
-export const PhoneSchemaModel = mongoose.model("phones", phone_schema);
+export const PhoneSchemaModel = mongoose.model<IPhone>("phones", phone_schema);
 
 export default PhoneSchemaModel;

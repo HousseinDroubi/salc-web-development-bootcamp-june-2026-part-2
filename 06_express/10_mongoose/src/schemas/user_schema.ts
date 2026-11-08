@@ -4,6 +4,7 @@ import mongoose, {
   type QueryWithHelpers,
   type ValidatorProps,
 } from "mongoose";
+import type { IPhone } from "./phone_schema.js"; // <-- CHANGED: Imported IPhone interface for the populated virtual field
 
 // 1. Raw document attributes
 export interface IUser {
@@ -19,6 +20,7 @@ export interface IUser {
     country?: string;
     region?: string;
   };
+  phones?: IPhone[];
 }
 
 // 2. Instance methods
@@ -63,48 +65,54 @@ const user_schema = new mongoose.Schema<
   IUserModel,
   IUserMethods,
   IUserQueryHelpers
->({
-  name: {
-    type: String,
-    minLength: 3,
-    max: 20,
-  },
-  age: {
-    type: Number,
-    min: 18,
-    max: 200,
-  },
-  hourly_pay: {
-    type: Number,
-    required: true,
-    validate: {
-      validator: (v: number) => v >= 12 && v % 2 === 0,
-      message: (props: ValidatorProps) =>
-        `${props.value} must be greater than 11 and even`,
+>(
+  {
+    name: {
+      type: String,
+      minLength: 3,
+      maxLength: 20,
     },
+    age: {
+      type: Number,
+      min: 18,
+      max: 200,
+    },
+    hourly_pay: {
+      type: Number,
+      required: true,
+      validate: {
+        validator: (v: number) => v >= 12 && v % 2 === 0,
+        message: (props: ValidatorProps) =>
+          `${props.value} must be greater than 11 and even`,
+      },
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+    },
+    added_at: {
+      type: Date,
+      immutable: true,
+      default: () => new Date(),
+    },
+    updated_at: {
+      type: Date,
+      default: () => new Date(),
+    },
+    supervisor_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
+    skills: [String],
+    address: address_schema,
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
+  {
+    toJSON: { virtuals: true }, // Forces Mongoose to include this virtual phones field when turning the document into JSON (e.g., when sending res.json(user) in an Express API). Without this, virtual fields are stripped from JSON output.
+    toObject: { virtuals: true }, // Forces Mongoose to include the virtual phones field when explicitly converting the Mongoose document to a plain JavaScript object using user.toObject().
   },
-  added_at: {
-    type: Date,
-    immutable: true,
-    default: () => new Date(),
-  },
-  updated_at: {
-    type: Date,
-    default: () => new Date(),
-  },
-  supervisor_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
-  },
-  skills: [String],
-  address: address_schema,
-});
+);
 
 // Instance method implementation
 user_schema.methods.sayHi = function (this: UserDocument) {
@@ -133,6 +141,13 @@ user_schema.post("save", function (doc: UserDocument) {
   doc.sayHi();
 });
 
+// Creates a pseudo-field on the User called phones. It does not store an array of IDs in your MongoDB database; it just tells Mongoose that this property exists in JavaScript.
+user_schema.virtual("phones", {
+  ref: "phones", // Tells Mongoose which collection to look inside to find the matching documents (the phones collection).
+  localField: "_id", // The property on this model (User) to use for the match — the user's own _id.
+  foreignField: "user_id", // The property on the other model (Phone) where the user's ID is saved. Mongoose connects the two by finding all phones where phone.user_id === user._id.
+});
+
 // Crucial: Type the model with <IUser, IUserModel, IUserQueryHelpers>
 const UserSchemaModel = mongoose.model<IUser, IUserModel, IUserQueryHelpers>(
   "users",
@@ -140,3 +155,8 @@ const UserSchemaModel = mongoose.model<IUser, IUserModel, IUserQueryHelpers>(
 );
 
 export default UserSchemaModel;
+
+// Note:
+// What user.toObject() does
+// When you run const user = await User.findById(...), Mongoose gives you a heavy Mongoose Document with internal state tracking, validation rules, change-detection, and methods like .save() or your custom .sayHi().
+// user.toObject() strips all the Mongoose machinery away and turns it into a plain JavaScript {}:

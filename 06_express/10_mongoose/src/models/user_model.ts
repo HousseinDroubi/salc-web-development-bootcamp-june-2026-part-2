@@ -559,6 +559,12 @@ class UserModel {
     console.log(users);
   }
 
+  // Relations: Find users with their phones
+  public static async find34() {
+    const users = await UserSchemaModel.find({}).populate("phones");
+    console.log(users);
+  }
+
   // Update
   // Method 1: findOne() + save() or findById() + save() -> This method use validations
   public static async update1() {
