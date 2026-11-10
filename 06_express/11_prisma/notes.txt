@@ -1,0 +1,62 @@
+1- Prisma is an ORM (database toolkit) that lets you talk to your database using plain JavaScript/TypeScript functions instead of writing raw SQL.
+It's generally built for SQL, but you can use it for NoSQL such as MongoDB.
+
+2- To init prisma project: Prisma 7 is recommended for stability
+    1) Run:
+        npm install prisma@7 --save-dev // It is just a command-line tool (CLI) used to run migrations, inspect schemas, and generate code.
+        npm i @prisma/client@7 // It contains the actual database client (PrismaClient). Think of @prisma/client as an empty shell or engine, and "npx prisma generate" to generate the custom JavaScript code to talk to DB.
+        npx prisma init --datasource-provider=postgresql --no-skills
+        npm install @prisma/adapter-pg pg
+
+    3) add the following to ts.config after npx tsc init:
+        "lib": ["esnext"], // "Teach TypeScript the newest JavaScript features."
+        "esModuleInterop": true // used for new importing/exporting way in js but for ts
+
+3- To format schema.prisma file:
+npx prisma format
+
+Or you can use Prisma extension
+
+4- After filling the model, run:
+npx prisma generate
+It will do:
+    1) Opens your personal schema.prisma.
+
+    2) Reads your models, fields, relations, and types (e.g., Student, Course...).
+
+    3) Overwrites the contents inside src/generated/prisma with auto-generated TypeScript definitions and JavaScript objects tailored strictly to your schema.
+
+5- What "migrations" mean:
+Migration is like a Git commit history, but for your database structure.
+
+Example:
+When working with a model using id, username and password and there were 10 real-users for example.
+When you decided later to add profile_picture_url, you can't just drop old tables and start-over with 
+new tables, because you have 10 real-users. So when adding in the model later on:
+
+profile_picture_url: String? 
+
+What does Prisma do then:
+
+ALTER TABLE "User" ADD COLUMN "profile_picture_url" TEXT;
+
+So the database adds the new column without erasing the existing rows or data.
+
+So we have:
+A) prisma migrate dev
+
+prisma migrate dev is for local development:
+    1) It looks at your schema.prisma
+    2) Generates a new SQL migration file
+    3) Applies that migration to your local database
+    4) If your schema has migrations conflict, it can reset your database.
+
+B) prisma migrate deploy:
+
+prisma migrate deploy is for production:
+    1) It strictly applies existing, unapplied migration files to the database:
+        It looks at the migration files you already created on your laptop and checks the database.
+        If there are any SQL files in your project that haven't been run on this database yet, it runs them one by one.
+        It only plays what's already written.
+    2) It never creates new migration files
+    3) It never resets or drops the database

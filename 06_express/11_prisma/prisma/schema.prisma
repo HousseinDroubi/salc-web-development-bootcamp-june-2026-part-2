@@ -1,0 +1,92 @@
+// The following means:
+// Read my database models, and build me a custom JavaScript/TypeScript tool so my code can talk to the database
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+// The following means:
+// Connect to my database, and read the models I have defined in this file
+datasource db {
+  provider = "postgresql"
+}
+
+model Student {
+  // The following are field level attribute, which means they apply to the field they are defined on
+  id                   String                @id @default(uuid()) // or @default(autoincrement()) for auto increment id with Int type
+  name                 String
+  age                  Int
+  email                String?               @unique
+  is_married           Boolean               @default(false)
+  address              Json
+  skills               String[]              @default([])
+  gpa                  Float
+  added_at             DateTime              @default(now())
+  update_at            DateTime              @updatedAt
+  studentHealthProfile StudentHealthProfile? // 1:1
+  phones               Phone[] //  1:N
+  courses              Course[] // M:N
+  // @@id([name, email]) // This means that the combination of name and email will be used as the primary key for the Student model - But make sure to remove id field if you use this
+
+  // The following are block level attributes, which means they apply to the entire model
+  @@unique([age, name]) // This means that the combination of age and name must be unique across all students table records
+  @@index([email]) // This means that the email field will be indexed for faster lookups
+  @@map("students") // To give the table a custom name
+}
+
+model Course {
+  id        String    @id @default(uuid())
+  name      String
+  added_at  DateTime  @default(now())
+  update_at DateTime  @updatedAt
+  students  Student[] // M:N
+
+  @@map("courses") // To give the table a custom name
+}
+
+model StudentHealthProfile {
+  id         String    @id @default(uuid())
+  blood_type BloodType
+  deceases   String[]  @default([])
+  student    Student   @relation(fields: [student_id], references: [id], onDelete: Cascade) // On onDelete: SetNull but make sure to put the student as Student? and student_id as String?
+  student_id String    @unique
+  added_at   DateTime  @default(now())
+  update_at  DateTime  @updatedAt
+
+  @@map("health_profile")
+}
+
+model Phone {
+  id         String   @id @default(uuid())
+  name       String
+  price      Int
+  student    Student  @relation(fields: [student_id], references: [id], onDelete: Cascade)
+  student_id String
+  added_at   DateTime @default(now())
+  update_at  DateTime @updatedAt
+
+  @@map("phones") // To give the table a custom name
+}
+
+enum BloodType {
+  O_P
+  O_N
+  B_P
+  B_N
+  A_P
+  A_N
+  AB_P
+  AB_N
+}
+
+// Notes:
+// For data types:
+/**
+ * DataType: means that this field is required
+ * DataType?: means that this field is nullable
+ * DataType[]: means that this field is an array of DataType
+ * Int and BigInt types. Int is a 32-bit integer, and BigInt is a 64-bit integer. Use BigInt for large numbers that exceed the range of Int.
+ * Float and Decimal types. Float is a 32-bit floating point number, and Decimal is a high-precision decimal number. Use Decimal for financial calculations or when you need to avoid rounding errors.
+ * DateTime type for date and time values. Use DateTime for timestamps, dates, and times.
+ * Bytes type for binary data. Use Bytes for storing files, images, or other binary data.
+ */
