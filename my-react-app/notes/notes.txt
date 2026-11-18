@@ -1,0 +1,50 @@
+1- How to create a project app:
+    * npm create vite@latest
+    * enter project name
+    * choose React
+    * choose TypeScript + React compiler
+    * choose Oxlint
+    * choose yes
+
+2- Folder Structure in React:
+my-react-app/
+├── node_modules/         # Auto-generated folder storing all installed third-party packages and dependencies
+├── public/               # Static assets (favicons, logos) served directly at the root URL without bundling
+├── src/                  # Core application source code
+│   ├── App.tsx           # Root component, primarily used to define app-wide layout and client-side routing
+│   └── main.tsx          # Entry point that grabs the root HTML element and mounts the React app into the DOM
+└── vite.config.ts        # Configuration file for Vite (build settings, plugins, dev server options, path aliases)
+
+3- JSX: 
+JSX (JavaScript XML) is a syntax extension for JavaScript that allows you to write
+HTML-like markup directly inside your JavaScript files.
+Under the hood, build tools like Babel or Vite compile JSX into
+standard React.createElement() JavaScript function calls that
+produce Virtual DOM objects.
+
+4- SPA:
+SPA (Single-Page Application) is a web application architecture where
+the browser loads only a single HTML file (index.html) once.
+As the user navigates or interacts with the app, React dynamically
+swaps out components and updates the content on the screen
+via JavaScript without reloading the entire page from the server.
+
+5- React is an open-source JavaScript library for building fast,
+interactive user interfaces—primarily for web applications—using reusable,
+self-contained UI pieces called components.
+
+6- DOM vs VDOM (Find more in i_1.png):
+    a) in Vanilla HTML, CSS and JS:
+    When working with vanilla html, css and js, any change in the DOM (like
+    appendChild, removeChild, updated innerHTML, update innerText) will have
+    to re-render the whole tree, which very slow.
+
+    b) In React:
+        1) VDOM (Virtual DOM) is a lightweight, in-memory JavaScript copy of the Real DOM used by React.
+        2) React has two version of VDOM:
+            * Previous VDOM: The Previous VDOM: A snapshot of what the UI looked like right before the state or data changed.
+            * The New VDOM: The updated Virtual DOM generated after the state or data changed.
+        How does react update the DOM:
+        When the When data changes, React updates the VDOM first, compares it with the previous version of VDOM to find the exact differences (diffing), and then surgically updates only those specific elements in the Real DOM (reconciliation), so it does not re-render the whole tree.
+
+7- All components must be wrapped in a single container
