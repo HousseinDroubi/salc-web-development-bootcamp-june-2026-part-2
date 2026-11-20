@@ -48,3 +48,19 @@ self-contained UI pieces called components.
         When the When data changes, React updates the VDOM first, compares it with the previous version of VDOM to find the exact differences (diffing), and then surgically updates only those specific elements in the Real DOM (reconciliation), so it does not re-render the whole tree.
 
 7- All components must be wrapped in a single container
+
+8- Functional components are standard JavaScript or TypeScript functions
+that accept data as an object argument (called props)
+and return JSX describing what should appear on the screen.
+They are the modern standard for writing components in React and
+use Hooks (such as useState and useEffect) to manage internal state
+and side effects.
+
+9- Component life-cycle:
+    The component lifecycle refers to the series of distinct phases a
+    React component goes through from the moment it is created
+    until it is removed from the screen:
+
+    * Mounting: The component is created, rendered for the first time, and inserted into the Real DOM.
+    * Updating: The component re-renders because its state or incoming props have changed.
+    * Unmounting: The component is removed from the Real DOM and destroyed (e.g., when navigating away or conditionally hiding it), where any active timers or subscriptions are cleaned up.
