@@ -1,0 +1,7 @@
+1- Tailwind
+    Tailwind CSS is a styling tool that lets you style your UI directly inside
+    your HTML/JSX using small, single-purpose utility classes instead of
+    writing separate CSS files and inventing class names.
+
+2- To know how to setup tailwind css, visit their docs:
+https://tailwindcss.com/docs/installation/using-vite

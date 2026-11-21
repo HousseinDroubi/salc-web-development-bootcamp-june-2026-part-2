@@ -1,0 +1,8 @@
+1- Lifting state up:
+    * Lifting state up is moving state from child components into their closest common
+    parent so multiple components can share and stay in sync with the same data.
+
+    * Instead of children keeping separate copies of the data,
+    the parent acts as the single source of truth: it owns the state,
+    passes the current value down as a prop, and passes an updater function
+    down so children can trigger changes.

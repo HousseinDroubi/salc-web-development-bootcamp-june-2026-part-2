@@ -1,0 +1,10 @@
+Reading from .env file:
+    * Reading from a .env file in a React app means loading environment
+    variables (like API base URLs or public feature flags) into your
+    code without hardcoding them directly in your source files—usually
+    keeping different values per environment
+    (local development vs. production).
+
+    * Every variable in .env file should start with 'VITE_' if you are using vite to create your react app.
+
+    * .env should be in the root directory of your react app

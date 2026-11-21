@@ -1,0 +1,2 @@
+1- props:
+props (short for properties) are read-only arguments passed from a parent component to a child component to customize what it renders and how it behaves.

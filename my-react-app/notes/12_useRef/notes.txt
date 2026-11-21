@@ -1,0 +1,6 @@
+1- In React, useRef is a Hook that lets you persist a mutable value across re-renders without triggering a re-render when it changes.
+It returns a plain object with a single property: { current: initialValue }.
+
+2- Two Main Uses
+    a) Accessing a DOM element directly: Focus an input, scroll to an element, or measure size.
+    b) Storing a value across renders silently: Keep a timer ID, previous value, or counter that updates behind the scenes without re-rendering the component.

@@ -1,0 +1,8 @@
+1- cleanup function in useEffect:
+    * The cleanup function in useEffect is an optional function
+    you return from your effect to undo side effects before
+    the effect runs again or when the component unmounts.
+
+2- When It Runs
+    * Before re-running the effect: If a dependency changes and the effect is about to run again, React first runs the cleanup from the previous run.
+    * When the component unmounts: When the component is removed from the screen, React runs the cleanup one last time.

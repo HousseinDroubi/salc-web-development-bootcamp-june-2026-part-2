@@ -1,0 +1,11 @@
+1- useContext:
+    * useContext is a Hook that lets a component read values from Context—a way
+    to share data (like theme, current user, or language) across the component tree without passing props manually
+    through every middle layer (avoiding tedious prop drilling).
+    * You create it with createContext, wrap part of your tree in <Context.Provider value="{...}">, and read it inside any nested child using useContext(Context).
+
+2- When It Shines
+    * Multiple components at different nesting depths need the same shared data 
+    (like light/dark mode or auth state).
+    * Passing props through 3+ intermediate components that don't actually use those
+    props makes your code noisy.

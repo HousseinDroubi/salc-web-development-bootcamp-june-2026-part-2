@@ -1,0 +1,2 @@
+1- map and kay:
+map is the standard JavaScript array method used to transform a list of data into a list of JSX elements, and a key is a unique string or number prop you attach to each rendered item so React can track which items changed, moved, or were removed.

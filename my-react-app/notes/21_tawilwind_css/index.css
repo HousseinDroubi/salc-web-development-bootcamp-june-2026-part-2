@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #121063;
+  --text-huge: 3.5rem;
+}
