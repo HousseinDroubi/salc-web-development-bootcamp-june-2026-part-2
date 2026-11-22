@@ -1,0 +1,6 @@
+.todos-article {
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: calc(30px + var(--header-height));
+}
