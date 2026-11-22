@@ -8,8 +8,8 @@ import Title from "../components/Title";
 import type { messageProps } from "../types/components/message";
 import type { loginDto } from "../validations/requests/auth/validate_login";
 import loginAccountValidator from "../validations/requests/auth/validate_login";
-import type { loginResponseType } from "../types/apis/login";
-import { loginApi } from "../utils/apis/login_apis";
+import type { loginResponseType } from "../types/apis/auth/login";
+import { loginApi } from "../utils/apis/auth/login_apis";
 import { useNavigate } from "react-router";
 
 const Login = () => {

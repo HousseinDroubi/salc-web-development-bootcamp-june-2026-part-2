@@ -1,20 +1,17 @@
 import axios from "axios";
+import { TODO_URL } from "../../constants";
 import type {
-  loginRequestType,
-  loginResponseType,
-} from "../../types/apis/login";
-import { AUTH_URL } from "../constants";
-import { setUsernameCookie } from "../cookies";
+  addTodoRequestType,
+  addTodoResponseType,
+} from "../../../types/apis/todos/add_todo";
 
-const loginApi = async ({
-  username,
-  password,
-}: loginRequestType): Promise<loginResponseType> => {
+const addTodoApi = async ({
+  title,
+}: addTodoRequestType): Promise<addTodoResponseType> => {
   try {
-    const url = `${AUTH_URL}/login`;
+    const url = `${TODO_URL}/`;
     const body = {
-      username,
-      password,
+      title,
     };
 
     const response = await axios.post(url, body, {
@@ -24,13 +21,13 @@ const loginApi = async ({
       },
     });
 
-    setUsernameCookie(response.data.username);
     return {
       status: "success",
-      text: "",
+      text: "Todo Added",
+      todo: response.data.todo,
     };
   } catch (error: any) {
-    if (error.response?.status == 401) {
+    if (error.response?.status == 401 || error.response?.status == 400) {
       return {
         status: "error",
         text: error.response.data.message,
@@ -43,4 +40,4 @@ const loginApi = async ({
   }
 };
 
-export { loginApi };
+export { addTodoApi };

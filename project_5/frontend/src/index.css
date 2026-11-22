@@ -158,6 +158,9 @@ a:hover {
 }
 
 /* Header */
+.page-icon-border {
+  border-bottom: 2px solid var(--color-white);
+}
 
 header {
   position: fixed;

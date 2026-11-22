@@ -6,7 +6,7 @@ class TodoModel {
   public static async createTodo(
     title: string,
     user_id: string,
-  ): Promise<boolean> {
+  ): Promise<null | TodoType> {
     const result = await prisma.todo.create({
       data: {
         title,
@@ -14,7 +14,10 @@ class TodoModel {
       },
     });
 
-    return Boolean(result?.id);
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   public static async getAllTodos(user_id: string): Promise<TodoType[]> {

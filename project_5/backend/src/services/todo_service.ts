@@ -5,13 +5,13 @@ class TodoService {
   public static async createTodo(
     title: string,
     user_id: string,
-  ): Promise<201 | 500> {
+  ): Promise<TodoType | 500> {
     const result = await TodoModel.createTodo(title, user_id);
     if (!result) {
       return 500;
     }
 
-    return 201;
+    return result;
   }
 
   public static async getAllTodos(user_id: string): Promise<TodoType[]> {
@@ -22,7 +22,7 @@ class TodoService {
     user_id: string,
     todo_id: string,
   ): Promise<TodoType | 403 | 404> {
-    const todo: TodoType | undefined = await TodoModel.getTodoById(todo_id);
+    const todo: TodoType | null = await TodoModel.getTodoById(todo_id);
 
     if (!todo) {
       return 404;

@@ -9,7 +9,10 @@ import type { TodoType } from "../types/todo_types.js";
 class TodoController {
   public static addodo = async (req: Request, res: Response): Promise<void> => {
     const body: todoBodyDto = req.body;
-    const result = await TodoService.createTodo(body.title, body.id);
+    const result: TodoType | 500 = await TodoService.createTodo(
+      body.title,
+      body.id,
+    );
     if (result == 500) {
       res.status(result).json({
         message: "Interal Server Error",
@@ -17,8 +20,9 @@ class TodoController {
       return;
     }
 
-    res.status(result).json({
+    res.status(201).json({
       message: "Todo Created",
+      todo: result,
     });
   };
 

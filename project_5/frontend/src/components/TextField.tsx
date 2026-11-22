@@ -6,7 +6,19 @@ const TextField = ({
   placeholder,
   setText,
   type = "text",
+  is_text_area = false,
 }: textFieldProps) => {
+  if (is_text_area) {
+    return (
+      <textarea
+        value={value}
+        defaultValue={default_value}
+        placeholder={placeholder}
+        onChange={(e) => setText(e.target.value)}
+      />
+    );
+  }
+
   return (
     <input
       type={type}

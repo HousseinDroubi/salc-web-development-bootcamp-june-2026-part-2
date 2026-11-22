@@ -4,6 +4,7 @@ type textFieldProps = {
   default_value?: string;
   type?: "text" | "password";
   setText: React.Dispatch<React.SetStateAction<string>>;
+  is_text_area?: boolean;
 };
 
 export type { textFieldProps };

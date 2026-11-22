@@ -1,32 +1,36 @@
 import axios from "axios";
 import type {
-  signUpRequestType,
-  signUpResponseType,
-} from "../../types/apis/sign_up";
-import { AUTH_URL } from "../constants";
+  loginRequestType,
+  loginResponseType,
+} from "../../../types/apis/auth/login";
+import { AUTH_URL } from "../../constants";
+import { setUsernameCookie } from "../../cookies";
 
-const signUpApi = async ({
+const loginApi = async ({
   username,
   password,
-}: signUpRequestType): Promise<signUpResponseType> => {
+}: loginRequestType): Promise<loginResponseType> => {
   try {
-    const url = `${AUTH_URL}/create_account`;
-    const body: signUpRequestType = {
+    const url = `${AUTH_URL}/login`;
+    const body = {
       username,
       password,
     };
 
     const response = await axios.post(url, body, {
+      withCredentials: true,
       headers: {
         "Content-Type": "application/json",
       },
     });
+
+    setUsernameCookie(response.data.username);
     return {
       status: "success",
-      text: response.data.message,
+      text: "",
     };
   } catch (error: any) {
-    if ((error as any).response?.status == 403) {
+    if (error.response?.status == 401) {
       return {
         status: "error",
         text: error.response.data.message,
@@ -39,4 +43,4 @@ const signUpApi = async ({
   }
 };
 
-export { signUpApi };
+export { loginApi };

@@ -8,8 +8,8 @@ import Title from "../components/Title";
 import type { messageProps } from "../types/components/message";
 import type { createAccountDto } from "../validations/requests/auth/validate_create_accout";
 import CreateAccountValidator from "../validations/requests/auth/validate_create_accout";
-import { signUpApi } from "../utils/apis/sign_up_apis";
-import type { signUpResponseType } from "../types/apis/sign_up";
+import { signUpApi } from "../utils/apis/auth/sign_up_apis";
+import type { signUpResponseType } from "../types/apis/auth/sign_up";
 
 const Login = () => {
   const [username, setUsername] = useState<string>("");
