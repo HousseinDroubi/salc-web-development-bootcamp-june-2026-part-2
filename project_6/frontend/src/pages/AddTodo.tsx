@@ -47,7 +47,6 @@ const AddTodo = () => {
         text: result.text ?? "Done",
       });
       setTodoTitle("");
-      console.log(result);
       dispatch(
         addTodoToState({
           id: result.todo?.id!,
@@ -64,8 +63,8 @@ const AddTodo = () => {
   };
 
   return (
-    <article className="flex f-d-c j-c-c a-i-c m-h-100vh">
-      <main className="flex f-d-c j-c-c a-i-c">
+    <article className="flex justify-center items-center min-h-screen">
+      <main className="flex flex-col content-center items-center">
         <Title title="Add Todo" />
         <Box height="320px">
           <TextField

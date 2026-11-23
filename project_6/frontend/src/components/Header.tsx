@@ -11,36 +11,43 @@ const Header = () => {
     (state) => state.currentPage.current_page,
   );
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between fixed top-0 left-0 right-0 h-20 pt-0 pb-0 pr-7.5 pl-7.5 bg-blue">
       <section>
-        <h2>Todo</h2>
+        <h2 className="text-2xl font-bold text-white">Todo</h2>
       </section>
       <section>
         <nav>
-          <ol className="flex">
-            <li>
-              <Link
-                to="/todos"
-                className={current_page == "todos" ? "page-icon-border" : ""}
-              >
+          <ol className="flex gap-x-7.5">
+            <li
+              className={`max-[860px]:w-8 ${
+                current_page == "todos"
+                  ? "border-b border-white pb-2 border-solid"
+                  : ""
+              }`}
+            >
+              <Link to="/todos">
                 <img src={AllTodos} alt="all todos" width="40" height="40" />
               </Link>
             </li>
-            <li>
-              <Link
-                to="/add_todo"
-                className={current_page == "add_todo" ? "page-icon-border" : ""}
-              >
+            <li
+              className={`max-[860px]:w-8 ${
+                current_page == "add_todo"
+                  ? "border-b border-white pb-2 border-solid"
+                  : ""
+              }`}
+            >
+              <Link to="/add_todo">
                 <img src={AddTodo} alt="add todos" width="40" height="40" />
               </Link>
             </li>
-            <li>
-              <Link
-                to="/update_password"
-                className={
-                  current_page == "update_password" ? "page-icon-border" : ""
-                }
-              >
+            <li
+              className={`max-[860px]:w-8 ${
+                current_page == "update_password"
+                  ? "border-b border-white pb-2 border-solid"
+                  : ""
+              }`}
+            >
+              <Link to="/update_password">
                 <img
                   src={Password}
                   alt="update password"
@@ -49,13 +56,14 @@ const Header = () => {
                 />
               </Link>
             </li>
-            <li>
-              <Link
-                to="update_profile"
-                className={
-                  current_page == "update_profile" ? "page-icon-border" : ""
-                }
-              >
+            <li
+              className={`max-[860px]:w-8 ${
+                current_page == "update_profile"
+                  ? "border-b border-white pb-2 border-solid"
+                  : ""
+              }`}
+            >
+              <Link to="/update_profile">
                 <img
                   src={Profile}
                   alt="update profile"

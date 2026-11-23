@@ -61,8 +61,8 @@ const UpdateProfile = () => {
   }, []);
 
   return (
-    <article className="flex f-d-c j-c-c a-i-c m-h-100vh">
-      <main className="flex f-d-c j-c-c a-i-c">
+    <article className="flex justify-center items-center min-h-screen">
+      <main className="flex flex-col content-center items-center">
         <Title title="Update Profile" />
         <Box height="200px">
           <TextField

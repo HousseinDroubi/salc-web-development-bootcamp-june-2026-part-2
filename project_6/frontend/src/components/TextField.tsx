@@ -11,9 +11,8 @@ const TextField = ({
   if (is_text_area) {
     return (
       <textarea
-        className="rounded-md border-solid border border-blue p-1.75"
+        className="rounded-md border-solid border border-blue p-1.75 w-11/12 h-7/12"
         value={value}
-        defaultValue={default_value}
         placeholder={placeholder}
         onChange={(e) => setText(e.target.value)}
       />

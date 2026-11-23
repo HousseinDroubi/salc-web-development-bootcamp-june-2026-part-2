@@ -35,7 +35,6 @@ const UpdateTodo = () => {
     dispatch(updateCurrentPage(null));
     getTodoApi({ todo_id: id! })
       .then((response: any) => {
-        console.log(response);
         setTodoTitle(response.data.todo.title);
       })
       .catch(() => {
@@ -82,14 +81,13 @@ const UpdateTodo = () => {
   };
 
   return (
-    <article className="flex f-d-c j-c-c a-i-c m-h-100vh">
-      <main className="flex f-d-c j-c-c a-i-c">
+    <article className="flex justify-center items-center min-h-screen">
+      <main className="flex flex-col content-center items-center">
         <Title title="Update Todo" />
         <Box height="320px">
           <TextField
             placeholder="Enter Title"
             value={todoTitle}
-            default_value={todoTitle}
             setText={setTodoTitle}
             is_text_area
           />
