@@ -1,0 +1,4 @@
+1- In React with TypeScript, useAppSelector and useAppDispatch are typed wrappers
+around useSelector and useDispatch so your components automatically
+know the exact shape of state (RootState) and support dispatching thunks (AppDispatch)
+without repeating types everywhere.

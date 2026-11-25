@@ -1,0 +1,3 @@
+1- extraReducers lets cartSlice respond to actions defined outside
+this slice—such as an action from another slice or a createAsyncThunk(covered later on)
+lifecycle action—without generating new action creators for cartSlice.

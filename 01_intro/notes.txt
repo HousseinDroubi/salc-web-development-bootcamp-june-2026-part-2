@@ -1,0 +1,9 @@
+1- Redux: A state management library that keeps an app's shared data in one centralized place
+and updates it through predictable actions and reducers.
+
+2- Store: The single object holding your entire application's state,
+plus methods to read state, dispatch actions, and subscribe to changes.
+
+3- Slice: A modular piece of state (especially in Redux Toolkit)
+that groups a feature's initial state, reducers,
+and auto-generated action creators together in one place.

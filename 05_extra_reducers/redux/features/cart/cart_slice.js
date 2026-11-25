@@ -15,7 +15,9 @@ const cartSlice = createSlice({
       state.products_coutner = 0;
     },
   },
+  // Handle actions defined outside `cartSlice` using the `builder` callback
   extraReducers: (builder) => {
+    // Listen for `"last_order/removeFromOrder"` and add its payload to `products_coutner`
     builder.addCase("last_order/removeFromOrder", (state, action) => {
       state.products_coutner += action.payload;
     });

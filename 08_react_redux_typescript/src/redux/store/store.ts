@@ -12,5 +12,8 @@ const store = configureStore({
 });
 
 export default store;
+
+// Infer the full state tree type from `store.getState` (e.g., { cart, theme, user })
 export type RootState = ReturnType<typeof store.getState>;
+// Infer the dispatch type including middleware support (such as `createAsyncThunk`)
 export type AppDispatch = typeof store.dispatch;

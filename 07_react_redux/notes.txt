@@ -1,0 +1,8 @@
+1- <Provider> makes the Redux store available to React components below it in the tree.
+Inside those components, React Redux hooks connect UI to the store:
+
+2- useSelector: Reads data from the Redux store state and re-renders the component when
+that selected value changes.
+
+3- useDispatch: Returns the store's dispatch function so components can
+send actions (or thunks) to update state.

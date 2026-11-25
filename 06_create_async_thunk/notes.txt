@@ -1,0 +1,2 @@
+1- createAsyncThunk handles async requests and automatically dispatches pending, fulfilled, and rejected
+actions so extraReducers can update loading, data, and error states cleanly.
