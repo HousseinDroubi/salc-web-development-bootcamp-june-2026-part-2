@@ -67,7 +67,7 @@ npm i dependency_name@x.y.z --save-dev
   NodeJS use semantic versioning, which looks like: MAJOR.MINOR.PATCH (example 4.18.2)
 
     -MAJOR: Big update that might break your old code (jump from 4 to 5)
-    -MAJOR: New features added, but safe and doesn't break your old code. (jump from 18 to 19)
+    -MINOR: New features added, but safe and doesn't break your old code. (jump from 18 to 19)
     -PATCH: Small fixes but safe and doesn't break your old code. (jump from 2 to 3)
 
   So,how does  ~ and ^ handle number differently:
